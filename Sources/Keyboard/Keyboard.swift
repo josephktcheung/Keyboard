@@ -47,12 +47,13 @@ public struct Keyboard<Content>: View where Content: View {
                            scale: scale)
             case let .guitar(openPitches, fretCount):
                 Guitar(content: content, model: model, openPitches: openPitches, fretCount: fretCount)
-            case let .verticalIsomorphic(pitchRange, root, scale):
+            case let .verticalIsomorphic(pitchRange, root, scale, order):
                 VerticalIsomorphic(content: content,
                                    model: model,
                                    pitchRange: pitchRange,
                                    root: root,
-                                   scale: scale)
+                                   scale: scale,
+                                   verticalOrder: order)
             }
 
             if !latching {

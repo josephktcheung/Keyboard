@@ -3,6 +3,11 @@ import Tonic
 
 /// Types of keyboards we can generate
 public enum KeyboardLayout: Equatable, Hashable {
+    public enum VerticalOrder {
+        case highToLow
+        case lowToHigh
+    }
+    
     /// Guitar in arbitrary tuning, from first string (highest) to loweset string
     case guitar(openPitches: [Pitch] = [Pitch(64), Pitch(59), Pitch(55), Pitch(50), Pitch(45), Pitch(40)], fretcount: Int = 22)
 
@@ -17,5 +22,7 @@ public enum KeyboardLayout: Equatable, Hashable {
     /// For piano roll, jam strip type views
     case verticalIsomorphic(pitchRange: ClosedRange<Pitch>,
                             root: NoteClass = .C,
-                            scale: Scale = .chromatic)
+                            scale: Scale = .chromatic,
+                            verticalOrder: VerticalOrder = .lowToHigh
+                            )
 }

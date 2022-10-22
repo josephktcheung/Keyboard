@@ -7,6 +7,7 @@ struct VerticalIsomorphic<Content>: View where Content: View {
     var pitchRange: ClosedRange<Pitch>
     var root: NoteClass
     var scale: Scale
+    var verticalOrder: KeyboardLayout.VerticalOrder
 
     var pitchesToShow: [Pitch] {
         var pitchArray: [Pitch] = []
@@ -14,7 +15,7 @@ struct VerticalIsomorphic<Content>: View where Content: View {
         for pitch in pitchRange where pitch.existsNaturally(in: key) {
             pitchArray.append(pitch)
         }
-        return Array(pitchArray)
+        return Array(verticalOrder == .lowToHigh ? pitchArray : pitchArray.reversed())
     }
 
     var body: some View {
