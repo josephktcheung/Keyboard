@@ -26,35 +26,29 @@ struct PianoModel {
         case .C:
             return 0.0
         case .D:
-            return 3.0 / 16.0
+            return 2.0 / 12.0
         case .E:
-            return 6.0 / 16.0
+            return 4.0 / 12.0
         case .F:
-            return 0.0 / 16.0
+            return 0.0 / 12.0
         case .G:
-            return 3.0 / 16.0
+            return 1.0 / 12.0
         case .A:
-            return 4.5 / 16.0
+            return 3.0 / 12.0
         case .B:
-            return 6.0 / 16.0
+            return 5.0 / 12.0
         }
     }
 
     func space(pitch: Pitch) -> CGFloat {
-        let note = pitch.note(in: .C)
-        switch note.letter {
-        case .C, .D, .E, .F, .B:
-            return 10.0 / 16.0
-        case .G, .A:
-            return 8.5 / 16.0
-        }
+        7 / 12.0
     }
 
     func whiteKeyWidth(_ width: CGFloat) -> CGFloat {
         width / CGFloat(whiteKeys.count)
     }
 
-    var relativeBlackKeyWidth: CGFloat { 9.0 / 16.0 }
+    var relativeBlackKeyWidth: CGFloat { 7 / 12.0 }
 
     func blackKeyWidth(_ width: CGFloat) -> CGFloat {
         whiteKeyWidth(width) * relativeBlackKeyWidth
